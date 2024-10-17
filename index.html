@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5KPQ7BR76L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5KPQ7BR76L');
+</script>
+    <!-- Google tag (gtag.js) end-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Find Bangabandhu Sheikh Mujibur Rahman Agricultural University (BSMRAU) admission details, exam hall locations, and more. Developed by BSMRAU IT Society to help admission seekers.">
+<meta name="keywords" content="BSMRAU admission, BSMRAU exam hall, BSMRAU exam location, admission help, BSMRAU IT Society,Agri cluster,Bangabandhu Sheikh Mujibur Rahman Agricultural University">
+<meta property="og:title" content="BSMRAU Admission Help | Find Your Exam Hall">
+<meta property="og:description" content="Find your exam hall location at BSMRAU by entering your roll number.">
+<meta property="og:image" content="https://shahriarjahin.github.io/bsmrauadmissionhelp/bsmrauits.png">
+<meta property="og:url" content="https://bsmrauadmissionhelp.vercel.app/">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BSMRAU Admission Help">
+<meta name="twitter:description" content="Find your BSMRAU exam hall location quickly by entering your roll number.">
+<meta name="twitter:image" content="https://shahriarjahin.github.io/bsmrauadmissionhelp/bsmrauits.png">
+<meta name="twitter:url" content="https://bsmrauadmissionhelp.vercel.app/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="BSMRAU IT Society">
+<link rel="icon" type="image/x-icon" href="https://shahriarjahin.github.io/bsmrauadmissionhelp/favicon.ico">
+    <title>BSMRAU Admission 2024 - Exam Hall Location & Information</title>
+    
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <style>
+        /* Style for the map */
+        #map {
+            height: 55em;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+<!--     <div id="preloader">
+        <img src="https://shahriarjahin.github.io/bsmrauadmissionhelp/bsmrauits.png" alt="Preloader">
+    </div> -->
+<!--     <div id="content" style="display:none;"> -->
+    <section style="margin-top:2px;">
+        <div class="container">
+            <div align="center">
+                <div>
+                    <a href="https://www.facebook.com/bsmrauits">
+                        <img src="https://shahriarjahin.github.io/bsmrauadmissionhelp/bsmrauits.png" alt="BSMRAU IT SOCIETY">
+                    </a>
+                    <a class="its" href="https://www.facebook.com/bsmrauits">BSMRAU IT SOCIETY</a>
+                    <a class="jahin" href="https://www.facebook.com/shahriarmorshedjahin">Developed by JAHIN</a>
+                    <p>From Roll no: 22635 to 29634. Total: 7000</p>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div align="center">
+                <div>
+                    <h1> Find Your Exam Hall Location</h1>
+                </div>
+                <div>
+                    <input type="number" id="rollNumberInput" placeholder="Enter Roll Number">
+                </div>
+                <div>
+                    <button class="buttonf" id="findlocation" onclick="findLocation()">Locate Your Exam Hall</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div align="center">
+                <!-- Button to open Google Maps directions -->
+                <button class="buttond" id="directionButton" style="display:none;" onclick="openGoogleMaps()">Open in maps</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Container for the map -->
+    <div id="map"></div>
+<!--     </div> -->
+
+    <!-- Leaflet.js JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    
+    <!-- External script file -->
+    <script src="scripts.js"></script>
+
+</body>
+
+</html>
