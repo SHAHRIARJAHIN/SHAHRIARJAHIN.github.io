@@ -5,26 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shahriar Jahin | Biotechnologist</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
     <!-- DNA Animation Background -->
     <canvas class="dna-bg" id="dnaCanvas"></canvas>
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="#" class="logo">
-            <span>SJ</span>ahin
+        <a href="https://smjahin.me" class="logo">
+            <span class="glitch" data-text="SMJ">SMJ</span>ahin
         </a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#hero"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li><a href="#about"><i class="fas fa-user-astronaut"></i> <span>About</span></a></li>
+            <li><a href="#projects"><i class="fas fa-project-diagram"></i> <span>Projects</span></a></li>
+            <li><a href="#experience"><i class="fas fa-briefcase"></i> <span>Experience</span></a></li>
+            <li><a href="#skills"><i class="fas fa-code"></i> <span>Skills</span></a></li>
+           
+            <li><a href="#contact"><i class="fas fa-comment-dots"></i> <span>Contact</span></a></li>
         </ul>
         <button class="dark-mode-toggle" id="darkModeToggle">
             <i class="fas fa-moon"></i>
@@ -34,32 +38,45 @@
         </button>
     </nav>
 
-    <!-- Hero Section -->
+    
+     <!-- Hero Section -->
     <section id="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <p class="greeting">Hello, my name is</p>
-                <h1 class="hero-title">Shahriar Jahin</h1>
-                <h2 class="hero-subtitle">Biotechnologist & Coder</h2>
+                <p class="greeting animate__animated animate__fadeIn">Hello, my name is</p>
+                <h1 class="hero-title">
+                    <span class="title-word title-word-1">Shahriar</span>
+                    <span class="title-word title-word-2">Jahin</span>
+                </h1>
+                <h2 class="hero-subtitle typing-animation">Biotechnologist & Coder</h2>
                 <p class="hero-description">
                     Empowering Biological Insight Through Code & Curiosity. I combine fisheries science with computational biology to drive innovation in bioinformatics and biotechnology.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-primary btn-glow">
+                        <span>View My Work</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary btn-glow">
+                        <span>Get In Touch</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </a>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="profile-container">
                     <div class="profile-bg"></div>
-                    <img src="/api/placeholder/400/400" alt="Shahriar Jahin" class="profile-img">
+                    <div class="profile-border"></div>
+                    <img src="me.png" alt="Shahriar Jahin" class="profile-img">
+                    <div class="profile-overlay"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
+     <!-- About Section -->
+     <section id="about">
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
             <div class="about-text">
@@ -107,11 +124,11 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects">
+    <section id="projects" class="animate-on-scroll">
         <h2 class="section-title">Projects</h2>
         <div class="projects-container">
-            <div class="project-card">
-                <img src="/api/placeholder/400/200" alt="Quiz App" class="project-image">
+            <div class="project-card card-holographic">
+                <img src="./quizapp.png" alt="Quiz App" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Interactive Quiz Application</h3>
                     <p class="project-description">
@@ -120,61 +137,27 @@
                     <div class="project-tags">
                         <span class="project-tag">JavaScript</span>
                         <span class="project-tag">HTML/CSS</span>
-                        <span class="project-tag">Firebase</span>
+                        <span class="project-tag">Googleservices</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        <a href="https://github.com/SHAHRIARJAHIN/quiz-app" class="project-link"><i class="fab fa-github"></i></a>
+                        <a href="https://itsquizapp.vercel.app/" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="project-card">
-                <img src="/api/placeholder/400/200" alt="Genomic Analysis" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">Genomic Analysis Toolkit</h3>
-                    <p class="project-description">
-                        A collection of Python scripts for analyzing genomic data, with a focus on identification of genetic markers in aquatic species.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">BioPython</span>
-                        <span class="project-tag">Data Visualization</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="/api/placeholder/400/200" alt="Transcriptome Explorer" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">Transcriptome Explorer</h3>
-                    <p class="project-description">
-                        An R-based tool for visualizing and analyzing transcriptomic data from various fish species under different environmental conditions.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">R</span>
-                        <span class="project-tag">Bioconductor</span>
-                        <span class="project-tag">Data Analysis</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-            </div>
+            
+               
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience">
+    <section id="experience" class="animate-on-scroll">
         <h2 class="section-title">Experience & Leadership</h2>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <div class="timeline-date">2023 - Present</div>
+                    <div class="timeline-date">2025 - Present</div>
                     <h3 class="timeline-title">Vice President, IT Society</h3>
                     <div class="timeline-location">Gazipur Agricultural University</div>
                     <p class="timeline-description">
@@ -208,7 +191,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills">
+    <section id="skills" class="animate-on-scroll">
         <h2 class="section-title">Skills</h2>
         <div class="skills-container">
             <div class="skill-category">
@@ -332,41 +315,10 @@
     </section>
 
     <!-- Publications Section -->
-    <section id="publications">
-        <h2 class="section-title">Publications & Certifications</h2>
-        <div class="pub-container">
-            <div class="pub-card">
-                <h3 class="pub-title">Genomic Analysis of Stress Response in Tilapia Under Different Environmental Conditions</h3>
-                <p class="pub-authors">Shahriar Jahin, A. Rahman, S. Islam, M. Hossain</p>
-                <p class="pub-journal">Journal of Fisheries Research, 2023 (Under Review)</p>
-                <p class="pub-abstract">
-                    This study examines the genomic basis of stress response in tilapia species subjected to various environmental stressors. Using next-generation sequencing and bioinformatic analysis, we identified key genes involved in adaptive responses.
-                </p>
-                <a href="#" class="pub-link">View Preprint <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <div class="pub-card">
-                <h3 class="pub-title">Certificate in Advanced Bioinformatics</h3>
-                <p class="pub-authors">Coursera & Johns Hopkins University</p>
-                <p class="pub-journal">Completed December 2022</p>
-                <p class="pub-abstract">
-                    Comprehensive training in genomic data analysis, including sequence alignment, phylogenetics, structural biology, and machine learning applications in biological data.
-                </p>
-                <a href="#" class="pub-link">View Certificate <i class="fas fa-certificate"></i></a>
-            </div>
-            <div class="pub-card">
-                <h3 class="pub-title">Python for Genomic Data Science</h3>
-                <p class="pub-authors">edX & University of California, San Diego</p>
-                <p class="pub-journal">Completed August 2022</p>
-                <p class="pub-abstract">
-                    Specialized training in Python programming for genomic data analysis, focusing on sequence manipulation, alignment algorithms, and statistical analysis of genetic data.
-                </p>
-                <a href="#" class="pub-link">View Certificate <i class="fas fa-certificate"></i></a>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" class="animate-on-scroll">
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-container">
             <div class="contact-info">
@@ -389,12 +341,12 @@
                     </div>
                 </div>
                 <div class="contact-social">
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/shahriarjahin/" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/SHAHRIARJAHIN/" class="social-link"><i class="fab fa-github"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
                 </div>
-                <a href="#" class="btn btn-primary download-cv">
+                <a href="#" class="btn btn-primary download-cv btn-glow">
                     <i class="fas fa-download"></i> Download Resume
                 </a>
             </div>
@@ -412,7 +364,7 @@
                     <div class="form-group">
                         <textarea placeholder="Your Message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="submit" class="btn btn-primary btn-glow">Send Message</button>
                 </form>
             </div>
         </div>
@@ -426,6 +378,7 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

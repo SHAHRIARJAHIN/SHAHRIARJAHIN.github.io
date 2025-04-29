@@ -7,123 +7,52 @@ document.addEventListener('DOMContentLoaded', function() {
     initSkillsAnimation();
     initDNAAnimation();
     initContactForm();
+    initParticles();
+    initScrollAnimations();
 });
 
-// Handle navbar color change on scroll
-function initNavbarAnimation() {
-    const navbar = document.querySelector('.navbar');
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-}
-
-// Handle dark mode toggle
-function initDarkModeToggle() {
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-    const icon = darkModeToggle.querySelector('i');
-    
-    // Check for saved theme preference or use preferred color scheme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    } else if (savedTheme === 'light') {
-        body.classList.remove('dark-mode');
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        body.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    }
-    
-    // Toggle dark mode on click
-    darkModeToggle.addEventListener('click', function() {
-        body.classList.toggle('dark-mode');
-        
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            localStorage.setItem('theme', 'light');
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-    });
-}
-
-// Mobile menu toggle
-function initMobileMenu() {
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    
-    menuToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-        
-        // Change icon based on menu state
-        const icon = menuToggle.querySelector('i');
-        if (navLinks.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-    });
-    
-    // Close mobile menu when a link is clicked
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        });
-    });
-}
-
-// Animate skill bars when they come into view
-function initSkillsAnimation() {
-    const skillBars = document.querySelectorAll('.progress-bar');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Get the width from inline style (e.g., "width: 90%")
-                const width = entry.target.style.width;
-                // First set width to 0
-                entry.target.style.width = '0';
-                
-                // Then animate to the target width
-                setTimeout(() => {
-                    entry.target.style.width = width;
-                }, 200);
-                
-                // Unobserve after animation
-                observer.unobserve(entry.target);
+// Initialize particle.js background
+function initParticles() {
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#64ffda" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: { 
+                    enable: true, 
+                    distance: 150, 
+                    color: "#64ffda", 
+                    opacity: 0.2, 
+                    width: 1 
+                },
+                move: { 
+                    enable: true, 
+                    speed: 2, 
+                    direction: "none", 
+                    random: true, 
+                    straight: false, 
+                    out_mode: "out" 
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" }
+                }
             }
         });
-    }, { threshold: 0.2 });
-    
-    skillBars.forEach(bar => {
-        // Store the target width
-        const targetWidth = bar.style.width;
-        // Set initial width to 0
-        bar.style.width = '0';
-        // Observe the element
-        observer.observe(bar);
-    });
+    }
 }
 
 // DNA Animation in background canvas
 function initDNAAnimation() {
     const canvas = document.getElementById('dnaCanvas');
+    if (!canvas) return;
+    
     const ctx = canvas.getContext('2d');
     
     // Set canvas size to window size
@@ -144,15 +73,16 @@ function initDNAAnimation() {
             this.baseWidth = 30;
             this.speed = 0.5 + Math.random() * 0.5;
             this.offset = Math.random() * Math.PI * 2;
+            this.hue = Math.random() * 60 + 180; // Blue-green hue range
         }
         
         draw() {
             const time = Date.now() * 0.001;
             
-            ctx.strokeStyle = 'rgba(100, 255, 218, 0.3)';
+            // Left helix
+            ctx.strokeStyle = `hsla(${this.hue}, 100%, 70%, 0.3)`;
             ctx.lineWidth = 1;
             
-            // Draw left helix
             ctx.beginPath();
             for (let i = 0; i < this.length; i++) {
                 const t = i * 0.1 + time * this.speed + this.offset;
@@ -167,9 +97,9 @@ function initDNAAnimation() {
             }
             ctx.stroke();
             
-            // Draw right helix
+            // Right helix
+            ctx.strokeStyle = `hsla(${(this.hue + 120) % 360}, 100%, 70%, 0.3)`;
             ctx.beginPath();
-            ctx.strokeStyle = 'rgba(188, 19, 254, 0.3)';
             for (let i = 0; i < this.length; i++) {
                 const t = i * 0.1 + time * this.speed + this.offset + Math.PI;
                 const x = this.x + Math.sin(t) * this.baseWidth;
@@ -183,8 +113,7 @@ function initDNAAnimation() {
             }
             ctx.stroke();
             
-            // Draw bridges between helices
-            ctx.strokeStyle = 'rgba(204, 214, 246, 0.15)';
+            // Bridges between helices
             for (let i = 0; i < this.length; i += 3) {
                 const t1 = i * 0.1 + time * this.speed + this.offset;
                 const t2 = i * 0.1 + time * this.speed + this.offset + Math.PI;
@@ -193,6 +122,11 @@ function initDNAAnimation() {
                 const x2 = this.x + Math.sin(t2) * this.baseWidth;
                 const y = this.y + i * 10;
                 
+                const gradient = ctx.createLinearGradient(x1, y, x2, y);
+                gradient.addColorStop(0, `hsla(${this.hue}, 100%, 70%, 0.15)`);
+                gradient.addColorStop(1, `hsla(${(this.hue + 120) % 360}, 100%, 70%, 0.15)`);
+                
+                ctx.strokeStyle = gradient;
                 ctx.beginPath();
                 ctx.moveTo(x1, y);
                 ctx.lineTo(x2, y);
@@ -206,13 +140,14 @@ function initDNAAnimation() {
             // Reset if moved out of view
             if (this.y + this.length * 10 < 0) {
                 this.y = canvas.height;
+                this.x = Math.random() * canvas.width;
             }
         }
     }
     
     // Create DNA strands
     const strands = [];
-    const numberOfStrands = Math.floor(canvas.width / 300);
+    const numberOfStrands = Math.floor(canvas.width / 200);
     
     for (let i = 0; i < numberOfStrands; i++) {
         const x = Math.random() * canvas.width;
@@ -237,6 +172,8 @@ function initDNAAnimation() {
     animate();
 }
 
+// Rest of your existing script.js code remains the same...
+
 // Handle contact form submission
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
@@ -249,31 +186,35 @@ function initContactForm() {
             const formData = new FormData(contactForm);
             const formObject = Object.fromEntries(formData);
             
-            // Here you would typically send the data to a server
-            // For now, let's just simulate a successful submission
-            
-            // Show success message
+            // Show success message with futuristic animation
             const successMessage = document.createElement('div');
             successMessage.classList.add('success-message');
             successMessage.innerHTML = `
-                <i class="fas fa-check-circle"></i>
-                <p>Your message has been sent successfully!</p>
+                <div class="success-icon">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="var(--teal)" stroke-width="5" stroke-dasharray="283" stroke-dashoffset="283" class="circle"/>
+                        <path d="M30,50 L45,65 L70,35" fill="none" stroke="var(--teal)" stroke-width="5" stroke-dasharray="50" stroke-dashoffset="50" class="check"/>
+                    </svg>
+                </div>
+                <h3>Transmission Successful!</h3>
+                <p>Your message has been sent through the quantum network.</p>
             `;
             
-            // Add success message after form
             contactForm.innerHTML = '';
             contactForm.appendChild(successMessage);
             
-            // Style success message
-            successMessage.style.textAlign = 'center';
-            successMessage.style.padding = '2rem';
-            
-            const icon = successMessage.querySelector('i');
-            icon.style.fontSize = '3rem';
-            icon.style.color = 'var(--teal)';
-            icon.style.marginBottom = '1rem';
+            // Animate the success icon
+            setTimeout(() => {
+                document.querySelector('.circle').style.strokeDashoffset = '0';
+                document.querySelector('.check').style.strokeDashoffset = '0';
+            }, 100);
             
             console.log('Form submitted:', formObject);
         });
     }
 }
+
+// Add event listener for page load animations
+window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+});
