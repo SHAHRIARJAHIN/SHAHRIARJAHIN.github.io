@@ -405,10 +405,18 @@
             </div>
             <div class="contact-form">
                 <form id="contactForm">
-                    <input type="text" name="from_name" placeholder="Your Name" required />
-                    <input type="email" name="from_email" placeholder="Your Email" required />
-                    <input type="text" name="subject" placeholder="Subject" />
-                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <div class="form-group">
+                        <input type="text" name="from_name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="from_email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
                     <button type="submit" class="btn btn-primary btn-glow">Send Message</button>
                 </form>
             </div>
@@ -416,6 +424,13 @@
     </section>
 
     <!-- Footer -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function() {
+        emailjs.init("gqHGwKyo9GI8quIwO"); // Replace with your EmailJS user ID
+      })();
+    </script>
+    
     <footer>
         <div class="footer-content">
             <p>© 2025 Shahriar Morshed Jahin. All Rights Reserved.</p>
@@ -438,13 +453,6 @@
             });
         });
     </script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  (function() {
-    emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
-  })();
-</script>
-
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="scripts.js"></script>
 </body>
