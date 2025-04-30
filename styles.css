@@ -969,7 +969,7 @@ h1, h2, h3, h4 {
 .timeline-location {
     color: var(--neon-purple);
     margin-bottom: 1rem;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -1350,6 +1350,12 @@ footer {
     }
 }
 
+.institution-logo {
+    width: 45px;
+    height: 45px;
+    margin-right: 0.5rem;
+    object-fit: cover;
+}
 /* ===== DARK MODE TOGGLE ===== */
 .dark-mode-toggle {
     background: none;
