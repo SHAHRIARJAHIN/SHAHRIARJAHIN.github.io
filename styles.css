@@ -47,7 +47,7 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -100;
+    z-index: -2;
     opacity: 0.4;
 }
 /* Animation Classes */
@@ -168,9 +168,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.1;
+    opacity: 0.5;
     pointer-events: none;
-    z-index: -1;
+    z-index: -.5;
 }
 
 /* ===== GLITCH EFFECT ===== */
@@ -662,7 +662,7 @@ h1, h2, h3, h4 {
 
 /* ===== ABOUT SECTION ===== */
 #about {
-    padding: 10rem 5%;
+    padding: 5rem 5%;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
@@ -753,9 +753,16 @@ h1, h2, h3, h4 {
     color: var(--neon-teal);
 }
 
+/* ===== EDUCATION SECTION ===== */
+#education {
+    padding: 5rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
 /* ===== PROJECTS SECTION ===== */
 #projects {
-    padding: 10rem 5%;
+    padding: 5rem 5%;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
@@ -856,7 +863,7 @@ h1, h2, h3, h4 {
 
 /* ===== EXPERIENCE SECTION ===== */
 #experience {
-    padding: 10rem 5%;
+    padding: 5rem 5%;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
@@ -981,7 +988,7 @@ h1, h2, h3, h4 {
 
 /* ===== SKILLS SECTION ===== */
 #skills {
-    padding: 10rem 5%;
+    padding: 5rem 5%;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
@@ -1081,7 +1088,7 @@ h1, h2, h3, h4 {
 
 /* ===== PUBLICATIONS SECTION ===== */
 #publications {
-    padding: 10rem 5%;
+    padding: 5rem 5%;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
@@ -1170,7 +1177,7 @@ h1, h2, h3, h4 {
 
 /* ===== CONTACT SECTION ===== */
 #contact {
-    padding: 10rem 5%;
+    padding: 5rem 5%;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;

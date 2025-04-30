@@ -47,6 +47,76 @@ function initParticles() {
         });
     }
 }
+function initNavbarAnimation() {
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+}
+function initDarkModeToggle() {
+    const toggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    toggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        // Optional: toggle icon
+        const icon = toggle.querySelector('i');
+        if (icon.classList.contains('fa-moon')) {
+            icon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            icon.classList.replace('fa-sun', 'fa-moon');
+        }
+    });
+}
+function initMobileMenu() {
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+}
+
+function initSkillsAnimation() {
+    const progressBars = document.querySelectorAll('.progress-bar');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                const width = bar.style.width;
+                bar.style.width = '0'; // Reset to trigger transition
+                setTimeout(() => {
+                    bar.style.transition = 'width 2s ease';
+                    bar.style.width = width; // Animate to original width
+                }, 50);
+                observer.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.4 });
+
+    progressBars.forEach(bar => observer.observe(bar));
+}
+function initScrollAnimations() {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+                observer.unobserve(entry.target); // Animate once
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    elements.forEach(el => observer.observe(el));
+}
 
 // DNA Animation in background canvas
 function initDNAAnimation() {
@@ -175,6 +245,7 @@ function initDNAAnimation() {
 // Rest of your existing script.js code remains the same...
 
 // Handle contact form submission
+
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     
@@ -182,34 +253,39 @@ function initContactForm() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(contactForm);
-            const formObject = Object.fromEntries(formData);
-            
-            // Show success message with futuristic animation
-            const successMessage = document.createElement('div');
-            successMessage.classList.add('success-message');
-            successMessage.innerHTML = `
-                <div class="success-icon">
-                    <svg viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="45" fill="none" stroke="var(--teal)" stroke-width="5" stroke-dasharray="283" stroke-dashoffset="283" class="circle"/>
-                        <path d="M30,50 L45,65 L70,35" fill="none" stroke="var(--teal)" stroke-width="5" stroke-dasharray="50" stroke-dashoffset="50" class="check"/>
-                    </svg>
-                </div>
-                <h3>Transmission Successful!</h3>
-                <p>Your message has been sent through the quantum network.</p>
-            `;
-            
-            contactForm.innerHTML = '';
-            contactForm.appendChild(successMessage);
-            
-            // Animate the success icon
-            setTimeout(() => {
-                document.querySelector('.circle').style.strokeDashoffset = '0';
-                document.querySelector('.check').style.strokeDashoffset = '0';
-            }, 100);
-            
-            console.log('Form submitted:', formObject);
+            // Send form using EmailJS
+            emailjs.sendForm('service_6m3af3p', 'template_zkcweey', contactForm)
+                .then(() => {
+                    // Show success message with futuristic animation
+                    const successMessage = document.createElement('div');
+                    successMessage.classList.add('success-message');
+                    successMessage.innerHTML = `
+                        <div class="success-icon">
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="var(--teal)" stroke-width="5" stroke-dasharray="283" stroke-dashoffset="283" class="circle"/>
+                                <path d="M30,50 L45,65 L70,35" fill="none" stroke="var(--teal)" stroke-width="5" stroke-dasharray="50" stroke-dashoffset="50" class="check"/>
+                            </svg>
+                        </div>
+                        <h3>Transmission Successful!</h3>
+                        <p>Your message has been sent through the quantum network.</p>
+                    `;
+                    
+                    contactForm.innerHTML = '';
+                    contactForm.appendChild(successMessage);
+                    
+                    // Animate the success icon
+                    setTimeout(() => {
+                        const circle = contactForm.querySelector('.circle');
+                        const check = contactForm.querySelector('.check');
+                        if (circle) circle.style.strokeDashoffset = '0';
+                        if (check) check.style.strokeDashoffset = '0';
+                    }, 100);
+                    
+                }, (error) => {
+                    // Error handling
+                    alert('Quantum transmission failed: ' + error.text);
+                    console.error('EmailJS error:', error);
+                });
         });
     }
 }
