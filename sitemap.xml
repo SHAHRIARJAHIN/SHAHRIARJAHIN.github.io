@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Primary domain -->
+  <url>
+    <loc>https://smjahin.me/</loc>
+    <lastmod>2025-05-01</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- GitHub Pages mirror -->
+  <url>
+    <loc>https://shahriarjahin.github.io/</loc>
+    <lastmod>2025-05-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Vercel mirror -->
+  <url>
+    <loc>https://smjahin.vercel.app/</loc>
+    <lastmod>2025-05-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Example subpages if applicable -->
+  <url>
+    <loc>https://smjahin.me/#about</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://smjahin.me/#projects</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://smjahin.me/#contact</loc>
+    <priority>0.6</priority>
+  </url>
+    <url>
+        <loc>https://smjahin.me/#skills</loc>
+        <priority>0.6</priority>
+    </url>
+  <url>
+    <loc>https://smjahin.me/#resume</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Add more URLs as needed -->
+</urlset>
