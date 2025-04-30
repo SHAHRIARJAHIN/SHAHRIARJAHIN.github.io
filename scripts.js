@@ -59,19 +59,30 @@ function initNavbarAnimation() {
 }
 function initDarkModeToggle() {
     const toggle = document.getElementById('darkModeToggle');
+    const icon = toggle.querySelector('i');
     const body = document.body;
 
+    // Optional: persist choice
+    if (localStorage.getItem('theme') === 'light') {
+        body.classList.add('light-mode');
+        icon.classList.replace('fa-moon', 'fa-sun');
+    }
+
     toggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        // Optional: toggle icon
-        const icon = toggle.querySelector('i');
-        if (icon.classList.contains('fa-moon')) {
+        body.classList.toggle('light-mode');
+        const isLight = body.classList.contains('light-mode');
+
+        if (isLight) {
             icon.classList.replace('fa-moon', 'fa-sun');
+            localStorage.setItem('theme', 'light');
         } else {
             icon.classList.replace('fa-sun', 'fa-moon');
+            localStorage.setItem('theme', 'dark');
         }
     });
 }
+
+
 function initMobileMenu() {
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
