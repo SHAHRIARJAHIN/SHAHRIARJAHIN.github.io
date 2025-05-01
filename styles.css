@@ -1179,7 +1179,39 @@ h1, h2, h3, h4 {
     color: var(--neon-purple);
     text-shadow: 0 0 10px var(--neon-purple);
 }
-
+/* achievement section */
+#achievements {
+    padding: 5rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+.achievements-container {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+.achievement-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+.achievement-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--neon-teal);
+    line-height: 1.4;
+}
+.achievement-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
 /* ===== CONTACT SECTION ===== */
 #contact {
     padding: 5rem 5%;
