@@ -1356,6 +1356,13 @@ footer {
     margin-right: 0.5rem;
     object-fit: cover;
 }
+.institution-logo-rounded {
+    width: 45px;
+    height: 45px;
+    margin-right: 0.5rem;
+    object-fit: cover;
+    border-radius: 30%;
+}
 /* ===== DARK MODE TOGGLE ===== */
 .dark-mode-toggle {
     background: none;
